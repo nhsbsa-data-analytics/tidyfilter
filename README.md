@@ -8,7 +8,7 @@ parts of the code from this R package, [`rtrie`](https://github.com/ezgraphs/rtr
 
 The use case this was written for is filtering profanity in comments made in free text questions in customer satisfaction surveys, for display in Shiny dashboards.
 
-The package uses continuous integration to ensure style, ensure no syntax errors and maintain consistency. Documentation is automated via Roxygenise.
+The package uses continuous integration to ensure style, no syntax errors and maintain consistency. Documentation is automated via Roxygenise.
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
