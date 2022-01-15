@@ -12,6 +12,8 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
+[![R](https://github.com/MarkMc1089/profanityfilter/actions/workflows/r.yml/badge.svg)](https://github.com/MarkMc1089/profanityfilter/actions/workflows/r.yml)
+
 ## Usage
 
 ```
