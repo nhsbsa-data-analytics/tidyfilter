@@ -7,3 +7,5 @@
 ^.lintr
 ^.github
 ^\.github$
+^codecov\.yml$
+^appveyor\.yml$

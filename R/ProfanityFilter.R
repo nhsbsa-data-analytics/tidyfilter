@@ -67,8 +67,8 @@ ProfanityFilter <- R6::R6Class(
     #'   # "Don't say ++++ or ++++++!"
     #' }
     censor = function(text, censor_char = "*") {
-      if (!is.character(text)) text <- as.character(text)
-      if (!is.character(censor_char)) text <- as.character(censor_char)
+      stopifnot(is.character(text))
+      stopifnot(is.character(censor_char))
 
       private$.censor_profane_words(text, censor_char)
     }

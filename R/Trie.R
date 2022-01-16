@@ -16,7 +16,7 @@ Trie <- R6::R6Class(
       rest <- substr(words, 2, nchar(words))
       zi <- nchar(words) == 0L
       c(
-        list(private$.end)[any(zi)],
+        list(" " = private$.end)[any(zi)],
         lapply(split(rest[!zi], first[!zi]), private$.insert)
       )
     }
@@ -32,6 +32,8 @@ Trie <- R6::R6Class(
     #' words <- list("first", "fist", "fjord")
     #' t <- Trie$new(words)
     initialize = function(words) {
+      stopifnot(all(as.logical(lapply(words, is.character))))
+
       private$.end <- "_end"
       private$.root <- private$.insert(words)
     },
