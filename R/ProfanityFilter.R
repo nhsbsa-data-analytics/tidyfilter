@@ -70,6 +70,8 @@ ProfanityFilter <- R6::R6Class(
       stopifnot(is.character(text))
       stopifnot(is.character(censor_char))
 
+      print(text)
+      
       private$.censor_profane_words(text, censor_char)
     }
   ),
