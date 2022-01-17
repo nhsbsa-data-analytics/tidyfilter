@@ -6,9 +6,7 @@
 #' @importFrom rjson fromJSON
 #'
 #' @export
-# Begin Exclude Linting
-ProfanityFilter <- R6::R6Class(
-  # End Exclude Linting
+ProfanityFilter <- R6::R6Class( # Exclude Linting
   "ProfanityFilter",
   private = list(
     .profane_trie = NULL,

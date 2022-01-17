@@ -4,9 +4,7 @@
 #'
 #' @importFrom R6 R6Class
 #' @export
-# Begin Exclude Linting
-Trie <- R6::R6Class(
-  # End Exclude Linting
+Trie <- R6::R6Class( # Exclude Linting
   "Trie",
   private = list(
     .root = list(),

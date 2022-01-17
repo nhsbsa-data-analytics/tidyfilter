@@ -1,6 +1,4 @@
-# Begin Exclude Linting
-TestTrie <- R6::R6Class(
-  # End Exclude Linting
+TestTrie <- R6::R6Class( # Exclude Linting
   inherit = profanityfilter::Trie,
   public = list(
     get = function() {
