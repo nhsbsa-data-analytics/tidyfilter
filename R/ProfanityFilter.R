@@ -26,7 +26,7 @@ ProfanityFilter <- R6::R6Class(
         clean_text <- paste(clean_text, curr_word)
       }
 
-      return (substr(clean_text, 2, nchar(clean_text)))
+      substr(clean_text, 2, nchar(clean_text))
     }
   ),
   public = list(
@@ -70,9 +70,7 @@ ProfanityFilter <- R6::R6Class(
       stopifnot(is.character(text))
       stopifnot(is.character(censor_char))
 
-      print(text)
-      
-      return (private$.censor_profane_words(text, censor_char))
+      private$.censor_profane_words(text, censor_char)
     }
   ),
   cloneable = FALSE
