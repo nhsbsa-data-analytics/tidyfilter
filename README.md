@@ -16,6 +16,8 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 [![R-CMD-check](https://github.com/MarkMc1089/profanityfilter/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MarkMc1089/profanityfilter/actions/workflows/check-standard.yaml)
 
 [![Codecov test coverage](https://codecov.io/gh/MarkMc1089/profanityfilter/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkMc1089/profanityfilter?branch=master)
+
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 ## Installation
@@ -25,6 +27,10 @@ devtools::install_github("MarkMc1089/profanityfilter")
 
 ## Usage
 
+### Trie based profanity filter (experimental)
+
+ProfanityFilter is an R6 class exposing only one function `censor`. This is not vectorised, so using on data.frames or tibbles is not recommended. It is also not configurable, so always uses the full profane_words JSON and replaces characters with "*".
+
 ```
 bad_words <- list("buck", "fugger")
 
@@ -33,4 +39,40 @@ pf$censor("Remember, don't say buck or fugger!")
 
 Output:
 "Remember, don't say **** or ******!"
+```
+
+### Regex based word filter
+
+Use this in `dplyr` pipelines. It is fast and vectorised. Also, fully configurable, requiring both a word list and replacement string.
+
+```
+data <- data.frame(
+    x = c("This is some text...", "...containing words."),
+    y = c("This is more text...", "...containing something."),
+    z = c("This is some more text...", "...containing more words.")
+  )
+
+data %>%
+  filter_words(
+    c("some", "words"),
+    "####",
+    x, y
+  )
+
+#                      x                        y                         z
+# 1 This is #### text... This is more text...     This is some more text...
+# 2 ...containing ####.  ...containing ####thing. ...containing more words.
+```
+### Wordlists
+Included are 3 word lists.
+
+- profane_words_basic.txt: Contains just 4 of the most offensive words.
+- profane_words.txt: Contains nearly 3000 potentially offensive expressions. Beware over-filtering, you will get many false positives!
+- profane_words.json: Same list of nearly 3000 words, in JSON format.
+
+```
+readLines(system.file("extdata", "profane_words_basic.txt", package = "profanityfilter"))
+profane_words = rjson::fromJSON(
+  file = system.file("extdata", "profane_words.json", package = "profanityfilter")
+)
 ```

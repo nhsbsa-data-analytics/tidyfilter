@@ -26,7 +26,7 @@
 #'     x, y
 #'   )
 #'
-#' #                      x                        y                          z
+#' #                      x                        y                         z
 #' # 1 This is #### text... This is more text...     This is some more text...
 #' # 2 ...containing ####.  ...containing ####thing. ...containing more words.
 filter_words <- function(.data, .words, .replacement, ...) {
