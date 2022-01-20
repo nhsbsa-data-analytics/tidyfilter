@@ -21,6 +21,7 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 <!-- badges: end -->
 
 ## Installation
+
 ```
 devtools::install_github("MarkMc1089/profanityfilter")
 ```
