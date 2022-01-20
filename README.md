@@ -16,8 +16,6 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 [![R-CMD-check](https://github.com/MarkMc1089/profanityfilter/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MarkMc1089/profanityfilter/actions/workflows/check-standard.yaml)
 
 [![Codecov test coverage](https://codecov.io/gh/MarkMc1089/profanityfilter/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkMc1089/profanityfilter?branch=master)
-
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/MarkMc1089/profanityfilter?branch=master&svg=true)](https://ci.appveyor.com/project/MarkMc1089/profanityfilter)
 <!-- badges: end -->
 
 ## Installation
