@@ -1,9 +1,8 @@
 # profanityfilter
-_Filter Profanity From Text_
+_Filter Text Based On List of Words Or Regexes_
 
-A simple profanity filter that uses a trie data structure for the profanity list. This has the potential to be faster than using the easier methods such as regular expressions or string methods. The idea came from this python [package](https://github.com/arhankundu99/profanity-filter); the code has been rewritten in R. Also I have used parts of the code from this R package, [`rtrie`](https://github.com/ezgraphs/rtrie/blob/develop/R/rtrie.R). The list of profane words is taken from this [repository](https://github.com/zacanger/profane-words).
 
-The use case this was written for is filtering profanity in comments made in free text questions in customer satisfaction surveys, for display in Shiny dashboards.
+The use case this was written for is filtering profanity and personal identifiable data in comments made in free text questions in customer satisfaction surveys, for display in Shiny dashboards.
 
 The package uses continuous integration to ensure style, no syntax errors and maintain consistency. Documentation is automated via Roxygenise.
 
@@ -20,24 +19,10 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 ## Installation
 
 ```
-devtools::install_github("MarkMc1089/profanityfilter")
+devtools::install_github("MarkMc1089/tidyfilter")
 ```
 
 ## Usage
-
-### Trie based profanity filter (experimental)
-
-ProfanityFilter is an R6 class exposing only one function `censor`. This is not vectorised, so using on data.frames or tibbles is not recommended. It is also not configurable, so always uses the full profane_words JSON and replaces characters with "*".
-
-```
-bad_words <- list("buck", "fugger")
-
-pf <- ProfanityChecker$new(bad_words)
-pf$censor("Remember, don't say buck or fugger!")
-
-Output:
-"Remember, don't say **** or ******!"
-```
 
 ### Regex based word filter
 
@@ -45,6 +30,7 @@ Use this in `dplyr` pipelines. It is fast and vectorised. Also, fully configurab
 
 ```
 data <- data.frame(
+    w = c("My phone number is 07421 345 678", "Call me on 01234567890")
     x = c("This is some text...", "...containing words."),
     y = c("This is more text...", "...containing something."),
     z = c("This is some more text...", "...containing more words.")
@@ -52,24 +38,25 @@ data <- data.frame(
 
 data %>%
   filter_words(
-    c("some", "words"),
+    c("some", "words", "and", "regex", "[0-9]{3,}[\s0-9]*[0-9]"),
     "####",
-    x, y
+    w, x, y
   )
 
-#                      x                        y                         z
-# 1 This is #### text... This is more text...     This is some more text...
-# 2 ...containing ####.  ...containing ####thing. ...containing more words.
+#                         w                    x                        y                         z
+# 1 My phone number is #### This is #### text... This is more text...     This is some more text...
+# 2 Call me on ####         ...containing ####.  ...containing ####thing. ...containing more words.
 ```
 ### Wordlists
-Included are 3 word lists.
+Included are 3 word lists for profanity and 1 list of regexes.
 
 - profane_words_basic.txt: Contains just 4 of the most offensive words.
 - profane_words.txt: Contains nearly 3000 potentially offensive expressions. Beware over-filtering, you will get many false positives!
 - profane_words.json: Same list of nearly 3000 words, in JSON format.
+- pid_regex: Contains regex to catch dates, phone numbers and emails.
 
 ```
-readLines(system.file("extdata", "profane_words_basic.txt", package = "profanityfilter"))
+readLines(system.file("extdata", "pid_regex.txt", package = "profanityfilter"))
 profane_words = rjson::fromJSON(
   file = system.file("extdata", "profane_words.json", package = "profanityfilter")
 )
