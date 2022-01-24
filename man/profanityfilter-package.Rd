@@ -6,8 +6,7 @@
 \alias{profanityfilter-package}
 \title{profanityfilter: Filter Profanity From Text}
 \description{
-Fast profanity filtering using a trie data structure. Also exports
-  a filter_words function that can be used in a dplyr pipeline.
+Fast profanity filtering using a trie data structure. Also exports a filter_words function that can be used in a dplyr pipeline.
 }
 \seealso{
 Useful links:
