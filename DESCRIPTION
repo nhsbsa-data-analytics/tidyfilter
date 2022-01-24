@@ -1,5 +1,5 @@
 Type: Package
-Package: profanityfilter
+Package: tidyfilter
 Title: Filter Profanity From Text
 Version: 1.0.0
 Author: Mark McPherson [aut, cre]
@@ -7,8 +7,8 @@ Maintainer: Mark McPherson <mark.mcpherson1@nhs.net>
 Description: Fast profanity filtering using a trie data structure. Also exports
   a filter_words function that can be used in a dplyr pipeline.
 License: MIT + file LICENSE
-URL: https://github.com/MarkMc1089/profanityfilter
-BugReports: https://github.com/MarkMc1089/profanityfilter/issues
+URL: https://github.com/MarkMc1089/tidyfilter
+BugReports: https://github.com/MarkMc1089/tidyfilter/issues
 Imports: 
     dplyr (>= 1.0.7),
     magrittr (>= 2.0.1),

@@ -1,5 +1,5 @@
 TestTrie <- R6::R6Class( # Exclude Linting
-  inherit = profanityfilter::Trie,
+  inherit = tidyfilter::Trie,
   public = list(
     get = function() {
       private$.root

@@ -1,4 +1,4 @@
 library(testthat)
-library(profanityfilter)
+library(tidyfilter)
 
-test_check("profanityfilter")
+test_check("tidyfilter")

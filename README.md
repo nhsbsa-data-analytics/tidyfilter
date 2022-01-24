@@ -9,9 +9,9 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 <!-- badges: start -->
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-[![R-CMD-check](https://github.com/MarkMc1089/profanityfilter/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MarkMc1089/profanityfilter/actions/workflows/check-standard.yaml)
+[![R-CMD-check](https://github.com/MarkMc1089/tidyfilter/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MarkMc1089/tidyfilter/actions/workflows/check-standard.yaml)
 
-[![Codecov test coverage](https://codecov.io/gh/MarkMc1089/profanityfilter/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkMc1089/profanityfilter?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/MarkMc1089/tidyfilter/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkMc1089/tidyfilter?branch=master)
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
@@ -56,8 +56,8 @@ Included are 3 word lists for profanity and 1 list of regexes.
 - pid_regex: Contains regex to catch dates, phone numbers and emails.
 
 ```
-readLines(system.file("extdata", "pid_regex.txt", package = "profanityfilter"))
+readLines(system.file("extdata", "pid_regex.txt", package = "tidyfilter"))
 profane_words = rjson::fromJSON(
-  file = system.file("extdata", "profane_words.json", package = "profanityfilter")
+  file = system.file("extdata", "profane_words.json", package = "tidyfilter")
 )
 ```
