@@ -1,4 +1,4 @@
-# profanityfilter
+# tidyfilter
 _Filter Text Based On List of Words Or Regexes_
 
 
