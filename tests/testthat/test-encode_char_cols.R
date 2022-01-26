@@ -6,7 +6,7 @@ test_that("Encoding is applied to character columns", {
   reencoded_data <- data %>%
     encode_char_cols("latin1")
 
-  if (Sys.info()["sysname"] == "windows") {
+  if (tolower(Sys.info()["sysname"]) == "windows") {
     expect_equal(
       reencoded_data,
       data <- data.frame(
