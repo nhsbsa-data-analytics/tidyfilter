@@ -2,8 +2,6 @@
 #' @description Finds words starting with a word in a given list, and
 #'   replaces each such word prefix with a given replacement.
 #'
-#' @importFrom dplyr mutate across
-#'
 #' @param .data A data.frame or tibble.
 #' @param .words A list of words.
 #' @param .replacement A character string used as replacement.
@@ -30,8 +28,8 @@
 #' # 1 This is #### text... This is more text...     This is some more text...
 #' # 2 ...containing ####.  ...containing ####thing. ...containing more words.
 filter_words <- function(.data, .words, .replacement, ...) {
-  .data %>% mutate(
-    across(
+  .data %>% dplyr::mutate(
+    dplyr::across(
       c(...),
       ~ gsub(
         paste0("\\b", .words, collapse = "|\\b"),

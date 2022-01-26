@@ -1,8 +1,6 @@
 #' @title Set character encoding in tibble or data.frame
 #' @description Given an encoding, this sets all character columns to it.
 #'
-#' @importFrom dplyr mutate_at
-#'
 #' @param .data A data.frame or tibble.
 #' @param .encoding A string specifying an encoding..
 #'
@@ -15,11 +13,10 @@
 #'   encode_char_cols("latin1")
 #' }
 encode_char_cols <- function(.data, .encoding) {
-  .data %>%
-    mutate_if(
-      is.character,
-      .funs = function(x) {
-        return(`Encoding<-`(x, "latin1"))
-      }
-    )
+  .data %>% dplyr::mutate_if(
+    is.character,
+    .funs = function(x) {
+      return(iconv(x, "UTF-8", .encoding))
+    }
+  )
 }
