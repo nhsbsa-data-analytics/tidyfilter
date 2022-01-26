@@ -5,14 +5,28 @@ test_that("Encoding is applied to character columns", {
   )
   reencoded_data <- data %>%
     encode_char_cols("latin1")
-  expect_equal(
-    reencoded_data,
-    data <- data.frame(
-      x = c(
-        rawToChar(as.raw(c(0x43, 0x61, 0x6e, 0x92, 0x74, 0x20, 0x73, 0x65, 0x65, 0x3f))),
-        rawToChar(as.raw(c(0xa3, 0x33, 0x33, 0x33, 0x2e, 0x33, 0x33)))
-      ),
-      y = c(1, 2)
+
+  if (Sys.info()["sysname"] == "windows") {
+    expect_equal(
+      reencoded_data,
+      data <- data.frame(
+        x = c(
+          rawToChar(as.raw(c(0x43, 0x61, 0x6e, 0x92, 0x74, 0x20, 0x73, 0x65, 0x65, 0x3f))),
+          rawToChar(as.raw(c(0xa3, 0x33, 0x33, 0x33, 0x2e, 0x33, 0x33)))
+        ),
+        y = c(1, 2)
+      )
     )
-  )
+  } else {
+    expect_equal(
+      reencoded_data,
+      data <- data.frame(
+        x = c(
+          "Can\x92t see?",
+          "\xa3333.33"
+        ),
+        y = c(1, 2)
+      )
+    )
+  }
 })
