@@ -24,8 +24,8 @@ test_that("Encoding is applied to character columns", {
       reencoded_data,
       data <- data.frame(
         x = c(
-          "Can\x92t see?",
-          "\xa3333.33"
+          "Can't see?",
+          "£333.33"
         ),
         y = c(1, 2)
       )
