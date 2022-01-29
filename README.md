@@ -2,7 +2,7 @@
 _Filter Text Based On List of Words Or Regexes_
 
 
-The use case this was written for is filtering profanity and personal identifiable data in comments made in free text questions in customer satisfaction surveys, for display in Shiny dashboards.
+The use case this was written for is filtering profanity and personally identifiable data in comments made in free text questions in customer satisfaction surveys, for display in Shiny dashboards.
 
 The package uses continuous integration to ensure style, no syntax errors and maintain consistency. Documentation is automated via Roxygenise.
 
@@ -26,7 +26,7 @@ devtools::install_github("MarkMc1089/tidyfilter")
 
 ### Regex based word filter
 
-Use this in `dplyr` pipelines. It is fast and vectorised. Also, fully configurable, requiring both a word list and replacement string.
+Use this in `dplyr` pipelines. It is fast and vectorised. Also, fully configurable, requiring both a word list and replacement character. Each match will be replaced with the same number of replacement characters as the number of characters in the match.
 
 ```
 data <- data.frame(
@@ -37,27 +37,24 @@ data <- data.frame(
   )
 
 data %>%
-  filter_words(
+  filter_text(
     c("some", "words", "and", "regex", "[0-9]{3,}[\s0-9]*[0-9]"),
-    "####",
+    "#",
     w, x, y
   )
 
-#                         w                    x                        y                         z
-# 1 My phone number is #### This is #### text... This is more text...     This is some more text...
-# 2 Call me on ####         ...containing ####.  ...containing ####thing. ...containing more words.
+#                         w                             x                        y                         z
+# 1 My phone number is ############# This is #### text... This is more text...     This is some more text...
+# 2 Call me on ###########           ...containing #####. ...containing ####thing. ...containing more words.
 ```
 ### Wordlists
-Included are 3 word lists for profanity and 1 list of regexes.
+Included are 2 word lists for profanity and 1 list of regexes.
 
 - profane_words_basic.txt: Contains just 4 of the most offensive words.
-- profane_words.txt: Contains nearly 3000 potentially offensive expressions. Beware over-filtering, you will get many false positives!
-- profane_words.json: Same list of nearly 3000 words, in JSON format.
-- pid_regex: Contains regex to catch dates, phone numbers and emails.
+- profane_words.txt:       Contains nearly 3000 potentially offensive expressions. Beware over-filtering, you will get many false positives!
+- pid_regex:               Contains regex to catch dates, phone numbers and emails.
 
 ```
-readLines(system.file("extdata", "pid_regex.txt", package = "tidyfilter"))
-profane_words = rjson::fromJSON(
-  file = system.file("extdata", "profane_words.json", package = "tidyfilter")
-)
+pid_regex <- readLines(system.file("extdata", "pid_regex.txt", package = "tidyfilter"))
+profanity <- readLines(system.file("extdata", "profane_words_basic.txt", package = "tidyfilter"))
 ```

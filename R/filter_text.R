@@ -18,23 +18,26 @@
 #' )
 #'
 #' data <- data %>%
-#'   filter_words(
+#'   filter_text(
 #'     c("some", "words"),
-#'     "####",
+#'     "#",
 #'     x, y
 #'   )
 #'
 #' #                      x                        y                         z
 #' # 1 This is #### text... This is more text...     This is some more text...
-#' # 2 ...containing ####.  ...containing ####thing. ...containing more words.
-filter_words <- function(.data, .words, .replacement, ...) {
+#' # 2 ...containing #####.  ...containing ####thing. ...containing more words.
+filter_text <- function(.data, .words, .replacement, ...) {
   .data %>% dplyr::mutate(
     dplyr::across(
       c(...),
-      ~ gsub(
-        paste0("\\b", .words, collapse = "|\\b"),
-        .replacement, .,
-        ignore.case = TRUE, perl = TRUE
+      ~ stringr::str_replace_all(
+        .,
+        stringr::regex(
+          paste0("\\b", .words, collapse = "|\\b"),
+          ignore_case = TRUE
+        ),
+        function(m) strrep(.replacement, nchar(m))
       )
     )
   )
