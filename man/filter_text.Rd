@@ -4,16 +4,16 @@
 \alias{filter_text}
 \title{Replace word prefixes that occur in given words.}
 \usage{
-filter_text(.data, .words, .replacement, ...)
+filter_text(.data, .filters, .replacement, ...)
 }
 \arguments{
 \item{.data}{A data.frame or tibble.}
 
+\item{.filters}{A list of words and/or regexes.}
+
 \item{.replacement}{A character string used as replacement.}
 
 \item{...}{Columns to act upon.}
-
-\item{.filters}{A list of words and/or regexes.}
 }
 \value{
 The original data, filtered.

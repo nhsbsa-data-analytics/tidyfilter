@@ -26,7 +26,7 @@ devtools::install_github("MarkMc1089/tidyfilter")
 
 ### Regex based word filter
 
-Use this in `dplyr` pipelines. It is fast and vectorised. Also, fully configurable, requiring both a word list and replacement character. Each match will be replaced with the same number of replacement characters as the number of characters in the match.
+Use this in `dplyr` pipelines. It is fast and vectorised. Also, fully configurable, requiring both a list of filter words or regular expressions and a replacement character. Each match will be replaced with the same number of replacement characters as the number of characters in the match.
 
 ```
 data <- data.frame(
