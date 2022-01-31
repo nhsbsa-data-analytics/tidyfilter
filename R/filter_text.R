@@ -3,7 +3,7 @@
 #'   replaces each such word prefix with a given replacement.
 #'
 #' @param .data A data.frame or tibble.
-#' @param .words A list of words.
+#' @param .filters A list of words and/or regexes.
 #' @param .replacement A character string used as replacement.
 #' @param ... Columns to act upon.
 #'
@@ -34,7 +34,7 @@ filter_text <- function(.data, .words, .replacement, ...) {
       ~ stringr::str_replace_all(
         .,
         stringr::regex(
-          paste0("\\b", .words, collapse = "|\\b"),
+          paste0("\\b", .filters, collapse = "|\\b"),
           ignore_case = TRUE
         ),
         function(m) strrep(.replacement, nchar(m))

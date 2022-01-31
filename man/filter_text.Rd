@@ -9,11 +9,11 @@ filter_text(.data, .words, .replacement, ...)
 \arguments{
 \item{.data}{A data.frame or tibble.}
 
-\item{.words}{A list of words.}
-
 \item{.replacement}{A character string used as replacement.}
 
 \item{...}{Columns to act upon.}
+
+\item{.filters}{A list of words and/or regexes.}
 }
 \value{
 The original data, filtered.
