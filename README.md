@@ -9,9 +9,7 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 <!-- badges: start -->
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-[![R-CMD-check](https://github.com/MarkMc1089/tidyfilter/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MarkMc1089/tidyfilter/actions/workflows/check-standard.yaml)
-
-[![Codecov test coverage](https://codecov.io/gh/MarkMc1089/tidyfilter/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkMc1089/tidyfilter?branch=master)
+[![R-CMD-check](https://github.com/MarkMc1089/tidyfilter/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/nhsbsa-data-analytics/tidyfilter/actions/workflows/check-standard.yaml)
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
@@ -19,7 +17,7 @@ The package uses continuous integration to ensure style, no syntax errors and ma
 ## Installation
 
 ```
-devtools::install_github("MarkMc1089/tidyfilter")
+devtools::install_github("nhsbsa-data-analytics/tidyfilter")
 ```
 
 ## Usage
